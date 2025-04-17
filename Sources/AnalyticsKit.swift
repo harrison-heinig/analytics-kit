@@ -8,11 +8,8 @@
 /// An analytics utility for reporting analytic events and errors.
 public final class AnalyticsKit: Sendable {
     
-    /// Default identifier for this package.
-    static let defaultIdentifier = "com.1022productions.analytics-kit"
-    
     /// Shared instance of ``AnalyticsKit`` for global access.
-    static let shared = AnalyticsKit()
+    public static let shared = AnalyticsKit()
     
     /// Underlying analytics manager responsible for handling events.
     private let analyticsManager: AnalyticsManaging
@@ -45,7 +42,7 @@ public final class AnalyticsKit: Sendable {
     /// - Parameters:
     ///   - id: The identifier for the error to be recorded.
     ///   - message: An optional description of the error.
-    func recordError(_ id: String, message: String? = nil) {
+    public static func recordError(_ id: String, message: String? = nil) {
         Task {
             await AnalyticsKit.shared.analyticsManager.recordError(id, message: message)
         }
